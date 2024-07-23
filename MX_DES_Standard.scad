@@ -11,22 +11,22 @@ use <skin.scad>
 Version 2: Eliptical Rectangle
 
 */
-mirror([0,0,0])keycap(
-  keyID  = 1, //change profile refer to KeyParameters Struct
-  cutLen = 0, //Don't change. for chopped caps
-  Stem   = true, //tusn on shell and stems
-  Dish   = true, //turn on dish cut
-  Stab   = 0, 
-  visualizeDish = false, // turn on debug visual of Dish 
-  crossSection  = false, // center cut to check internal
-  homeDot = false, //turn on homedots
-  Legends = false
- );
+// mirror([0,0,0])concave_keycap(
+//   keyID  = 1, //change profile refer to KeyParameters Struct
+//   cutLen = 0, //Don't change. for chopped caps
+//   Stem   = true, //tusn on shell and stems
+//   Dish   = true, //turn on dish cut
+//   Stab   = 0, 
+//   visualizeDish = false, // turn on debug visual of Dish 
+//   crossSection  = false, // center cut to check internal
+//   homeDot = false, //turn on homedots
+//   Legends = false
+//  );
  
 //#translate([0,38,13])cube([18-5.7, 18-5.7,1],center = true);
 //Parameters
 wallthickness = 2.0; // 1.5 for norm, 1.25 for cast master
-topthickness  = 2.5;   // 3 for norm, 2.5 for cast master
+topthickness  = 3;   // 3 for norm, 2.5 for cast master
 stepsize      = 40;  //resolution of Trajectory
 step          = 6;   //resolution of ellipes 
 fn            = 16;  //resolution of Rounded Rectangles: 60 for output
@@ -42,167 +42,44 @@ extra_vertical  = 0.6;
 StemBrimDep     = 0.25; 
 stemLayers      = 50; //resolution of stem to cap top transition
 
-keyParameters = //keyParameters[KeyID][ParameterID]
-[
-//  BotWid, BotLen, TWDif, TLDif, keyh, WSft, LSft  XSkew, YSkew, ZSkew, WEx, LEx, CapR0i, CapR0f, CapR1i, CapR1f, CapREx, StemEx
-//Column high sculpt 3 row system 
-    //0~5
-     [17.16,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4 8
-//    [17.16,  17.16,   6.5, 	 6.5, 10.0,    0,    0,    15,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4 8
-    [17.16,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [17.16,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    [17.16,  17.16,   6.5, 	 6.5, 8.75,    0,    0,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 deepdish
-    [17.16,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 mod 
-    [17.16,  17.16,   6.5, 	 6.5, 15.0,    0,  -.5,    20,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R1 num
-   
-    //1.25u 6~9
-    [21.86,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [21.86,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4  // neuron 3 deg  
-    [21.86,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [21.86,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //1.5u 10~13
-    [26.66,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [26.66,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [26.66,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [26.66,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //1.75u 14~17
-    [31.40,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [31.40,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [31.40,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [31.40,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //2.0u  18~22
-    [36.26,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [36.26,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [36.26,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [36.26,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    [36.26,  17.16,   6.5, 	 6.5,   15,    0,  -.5,    20,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R1
-    //2.25u 23~26
-    [40.96,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [40.96,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [40.96,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [40.96,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //2.50u 27~30  
-    [45.66,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  // neuron 2deg height to 10.5 
-    [45.66,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [45.66,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [45.66,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //2.75u 31~34
-    [50.66,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [50.66,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [50.66,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,    -4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [50.66,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //3.00u 34~37
-    [55.36,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    [55.36,  17.16,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-    [55.36,  17.16,   6.5, 	 6.5, 8.75,    0,   .5,     4,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [55.36,  17.16,   6.5, 	 6.5, 9.75,    0,    0,   -13,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R2
-    //6.25u 39
-    [117.1,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    //7.00u 40
-    [131.4,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,    -0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 
-    //num pad vert  2u 41
-    [17.16,  36.26,   6.5, 	 6.5,10.00,    0,    0,    -5,     0,     0,   2,   2,      1,      6,      1,    3.5,     2,       2], //R4
-    [17.16,  36.26,   6.5, 	 6.5,10.55,    0,    0,     9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R4
-
-];
-
-dishParameters = //dishParameter[keyID][ParameteID]
-[ 
-//FFwd1 FFwd2 FPit1 FPit2  DshDep DshHDif FArcIn FArcFn FArcEx     BFwd1 BFwd2 BPit1 BPit2  BArcIn BArcFn BArcEx
-  // low pro 3 row system
-  [   6,    3,   18,  -50,      5,    1.8,   8.8,    15,     2,        5,  4.4,    5,  -55,    8.8,    15,     2], //R4
-  [   5,  3.5,   10,  -55,      5,    1.8,   8.5,    15,     2,        5,  3.7,   10,  -55,    8.5,    15,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,   8.8,    15,     2,        6,    4,   13,   30,    8.8,    16,     2], //R2
-  [ 4.8,  3.3,   18,  -55,      5,    2.0,   8.5,    15,     2,      4.8,  3.3,   18,  -55,    8.5,    15,     2], //R3 deep
-  [   6,    3,   -5,  -50,      5,    1.8,   8.8,    15,     2,        6,  3.5,   13,  -50,    8.8,    15,     2], //R5 mod 
-  [   6,    3,   13,   30,      5,    1.9,   8.9,    15,     2,        5,  4.4,   10,  -50,    8.9,    16,     2], //R1 
-  //1.25
-  [   6,    3,   -5,  -50,      5,    1.8,  12.4,    18,     2,        6,  3.5,   13,  -50,   12.4,    19,     2], //R5
-  [   6,    3,   18,  -50,      5,    1.8,  12.4,    21,     2,        5,  4.4,    5,  -55,   12.4,    19,     2], //R4
-  [   5,  3.5,   10,  -55,      5,    1.8,  12.4,    18,     2,        5,  3.7,   10,  -55,   12.4,    19,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  12.4,    18,     2,        6,    4,    13,  30,   12.4,    19,     2], //R2
-  //1.5
-  [   6,    3,   -5,  -50,      5,    1.8,  15.6,    22,     2,        6,  3.5,   13,  -50,   15.6,    22,     2], //R5
-  [   6,    3,   18,  -50,      5,    1.8,  15.6,  27.2,     2,        5,  4.4,    5,  -55,   15.6,    22,     2], //R4
-  [   5,  3.5,   10,  -55,      5,    1.8,  15.5,    22,     2,        5,  3.7,   10,  -55,   15.5,    22,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  15.7,    22,     2,        6,    4,   13,   30,   15.7,    23,     2], //R2
-  //1.75
-  [   6,    3,   -5,  -50,      5,    1.8,  18.7,    25,     2,        6,  3.5,   13,  -50,   18.7,    26,     2], //R5
-  [   6,    3,   17,  -50,      5,    1.8,  18.7,    32,     2,        5,  4.4,    5,  -55,   18.7,    25,     2], //R4
-  [   5,  3.5,   10,  -55,      5,    1.8,  18.7,    27,     2,        5,  3.8,   10,  -55,   18.7,    25,     2], //R3 
-  [   6,    3,   10,  -50,      5,    1.8,  18.7,    25,     2,        6,    4,   13,   30,   18.7,    28,     2], //R2
-  //2
-  [   6,    3,   -5,  -50,      5,    1.8,  22.3,    30,     2,        6,  3.5,   13,  -50,   22.3,    31,     2], //R5
-  [   6,    3,   15,  -50,      5,    1.8,  22.3,    35,     2,        5,  4.4,    5,  -55,   22.3,    31,     2], //R4
-  [   6,    3,   17,  -55,      5,    1.8,  22.3,  32.5,     2,        5,  3.7,    8,  -55,   22.3,    31,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  22.3,    30,     2,        5,    4, 11.5,  -55,   22.3,    33,     2], //R2
-  [ 6.4,  3.2,   13,   30,      5,    1.9,  23.1,    38,     2,        5,  4.4,   10,  -50,   23.1,    34,     2], //R1
-  //2.25
-  [   6,    3,   -5,  -50,      5,    1.8,  25.6,    30,     2,        6,  3.5,   13,  -50,   25.6,    40,     2], //R5
-  [   6,    3,   15,  -50,      5,    1.8,  25.6,    41,     2,        5,  4.4,    5,  -55,   25.6,    34,     2], //R4
-  [   6,    3,   17,  -55,      5,    1.8,  25.6,  32.5,     2,        5,  3.7,    8,  -55,   21.9,    31,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  21.9,    30,     2,        5,    4, 11.5,  -55,   21.9,    33,     2], //R2
-  //2.50
-  [   6,    3,   -5,  -50,      5,    1.8,  29.0,    40,     2,        6,  3.5,   13,  -50,   29.0,    43,     2], //R5
-  [   6,    3,   15,  -50,      5,    1.8,  21.9,    34,     2,        5,  4.4,    5,  -55,   21.9,    31,     2], //R4
-  [   6,    3,   17,  -55,      5,    1.8,  21.9,  32.5,     2,        5,  3.7,    8,  -55,   21.9,    31,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  21.9,    30,     2,        5,    4, 11.5,  -55,   21.9,    33,     2], //R2
-  //2.75
-  [   6,    3,   -5,  -50,      5,    1.8,  33.1,    38,     2,        6,  3.5,   13,  -50,   33.1,    50,     2], //R5
-  [   6,    3,   15,  -50,      5,    1.8,  21.9,    34,     2,        5,  4.4,    5,  -55,   21.9,    31,     2], //R4
-  [   6,    3,   17,  -55,      5,    1.8,  21.9,  32.5,     2,        5,  3.7,    8,  -55,   21.9,    31,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  21.9,    30,     2,        5,    4, 11.5,  -55,   21.9,    33,     2], //R2
-  //3
-  [   6,    3,   -5,  -50,      5,    1.8, 35.85,    46,     2,        6,  3.5,   13,  -50,  35.85,    55,     2], //R5
-  [   6,    3,   15,  -50,      5,    1.8,  21.9,    34,     2,        5,  4.4,    5,  -55,   21.9,    31,     2], //R4
-  [   6,    3,   17,  -55,      5,    1.8,  21.9,  32.5,     2,        5,  3.7,    8,  -55,   21.9,    31,     2], //R3
-  [   6,    3,   10,  -50,      5,    1.8,  21.9,    30,     2,        5,    4, 11.5,  -55,   21.9,    33,     2], //R2
-  //6.25u
-  [   6,    3,   -5,  -50,      5,    1.8,  79.1,    95,     2,        6,  3.5,   13,  -50,   79.1,    127,     2], //R5
-  //7.00u
-  [   6,    3,   -5,  -50,      5,    1.8,  89.7,   105,     2,        6,  3.5,   13,  -50,   89.7,    143,     2], //R5
-  //2.00u vert
-  [  13,  5.5,    5,  -30,      4,    1.8,   8.5,    12,   1.5,       10,    8,    7,  -10,    8.5,     12,   1.5], //R5
-  [   6,    3,   -5,  -50,      5,    1.8,  79.1,    95,     2,        6,  3.5,   13,  -50,   79.1,    127,     2], //R5
-
-
-];
+dishParameters = import(file = "dishParameters.json")["Concave"];
+keyParameters = import(file = "keyParameters.json")["Concave"];
  
-function FrontForward1(keyID) = dishParameters[keyID][0];  //
-function FrontForward2(keyID) = dishParameters[keyID][1];  // 
-function FrontPitch1(keyID)   = dishParameters[keyID][2];  //
-function FrontPitch2(keyID)   = dishParameters[keyID][3];  //
-function DishDepth(keyID)     = dishParameters[keyID][4];  //
-function DishHeightDif(keyID) = dishParameters[keyID][5];  //
-function FrontInitArc(keyID)  = dishParameters[keyID][6];
-function FrontFinArc(keyID)   = dishParameters[keyID][7];
-function FrontArcExpo(keyID)  = dishParameters[keyID][8];
-function BackForward1(keyID)  = dishParameters[keyID][9];  //
-function BackForward2(keyID)  = dishParameters[keyID][10];  // 
-function BackPitch1(keyID)    = dishParameters[keyID][11];  //
-function BackPitch2(keyID)    = dishParameters[keyID][12];  //
-function BackInitArc(keyID)   = dishParameters[keyID][13];
-function BackFinArc(keyID)    = dishParameters[keyID][14];
-function BackArcExpo(keyID)   = dishParameters[keyID][15];
+function FrontForward1(keyID) = dishParameters[keyID].frontForward1;  //
+function FrontForward2(keyID) = dishParameters[keyID].frontForward2;  // 
+function FrontPitch1(keyID)   = dishParameters[keyID].frontPitch1;  //
+function FrontPitch2(keyID)   = dishParameters[keyID].frontPitch2;  //
+function DishDepth(keyID)     = dishParameters[keyID].dishDepth;  //
+function DishHeightDif(keyID) = dishParameters[keyID].dishHeightDif;  //
+function FrontInitArc(keyID)  = dishParameters[keyID].frontInitArc;
+function FrontFinArc(keyID)   = dishParameters[keyID].frontFinArc;
+function FrontArcExpo(keyID)  = dishParameters[keyID].frontArcExpo;
+function BackForward1(keyID)  = dishParameters[keyID].backForward1;  //
+function BackForward2(keyID)  = dishParameters[keyID].backForward2;  // 
+function BackPitch1(keyID)    = dishParameters[keyID].backPitch1;  //
+function BackPitch2(keyID)    = dishParameters[keyID].backPitch2;  //
+function BackInitArc(keyID)   = dishParameters[keyID].backInitArc;
+function BackFinArc(keyID)    = dishParameters[keyID].backFinArc;
+function BackArcExpo(keyID)   = dishParameters[keyID].backArcExpo;
 
-function BottomWidth(keyID)  = keyParameters[keyID][0];  //
-function BottomLength(keyID) = keyParameters[keyID][1];  // 
-function TopWidthDiff(keyID) = keyParameters[keyID][2];  //
-function TopLenDiff(keyID)   = keyParameters[keyID][3];  //
-function KeyHeight(keyID)    = keyParameters[keyID][4];  //
-function TopWidShift(keyID)  = keyParameters[keyID][5];
-function TopLenShift(keyID)  = keyParameters[keyID][6];
-function XAngleSkew(keyID)   = keyParameters[keyID][7];
-function YAngleSkew(keyID)   = keyParameters[keyID][8];
-function ZAngleSkew(keyID)   = keyParameters[keyID][9];
-function WidExponent(keyID)  = keyParameters[keyID][10];
-function LenExponent(keyID)  = keyParameters[keyID][11];
-function CapRound0i(keyID)   = keyParameters[keyID][12];
-function CapRound0f(keyID)   = keyParameters[keyID][13];
-function CapRound1i(keyID)   = keyParameters[keyID][14];
-function CapRound1f(keyID)   = keyParameters[keyID][15];
-function ChamExponent(keyID) = keyParameters[keyID][16];
-function StemExponent(keyID) = keyParameters[keyID][17];
+function BottomWidth(keyID)  = keyParameters[keyID].bottomWidth;  //
+function BottomLength(keyID) = keyParameters[keyID].bottomLength;  // 
+function TopWidthDiff(keyID) = keyParameters[keyID].topWidthDiff;  //
+function TopLenDiff(keyID)   = keyParameters[keyID].topLenDiff;  //
+function KeyHeight(keyID)    = keyParameters[keyID].keyHeight;  //
+function TopWidShift(keyID)  = keyParameters[keyID].topWidShift;
+function TopLenShift(keyID)  = keyParameters[keyID].topLenShift;
+function XAngleSkew(keyID)   = keyParameters[keyID].xAngleSkew;
+function YAngleSkew(keyID)   = keyParameters[keyID].yAngleSkew;
+function ZAngleSkew(keyID)   = keyParameters[keyID].zAngleSkew;
+function WidExponent(keyID)  = keyParameters[keyID].widExponent;
+function LenExponent(keyID)  = keyParameters[keyID].lenExponent;
+function CapRound0i(keyID)   = keyParameters[keyID].capRound0i;
+function CapRound0f(keyID)   = keyParameters[keyID].capRound0f;
+function CapRound1i(keyID)   = keyParameters[keyID].capRound1i;
+function CapRound1f(keyID)   = keyParameters[keyID].capRound1f;
+function ChamExponent(keyID) = keyParameters[keyID].chamExponent;
+function StemExponent(keyID) = keyParameters[keyID].stemExponent;
 
 function FrontTrajectory(keyID) = 
   [
@@ -302,7 +179,7 @@ function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))
 
 
 ///----- KEY Builder Module
-module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, crossSection = true,Legends = false, homeDot = false, Stab = 0) {
+module concave_keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, crossSection = true,Legends = false, homeDot = false, Stab = 0) {
   
   //Set Parameters for dish shape
   FrontPath = quantize_trajectories(FrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
@@ -318,61 +195,77 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false,
   //builds
   difference(){
     union(){
-      difference(){
+      difference()
+      {
         skin([for (i=[0:layers-1]) transform(translation(CapTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(CapTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]); //outer shell
         
         //Cut inner shell
-        if(Stem == true){ 
+        if(Stem == true)
+        { 
           translate([0,0,-.001])skin([for (i=[0:layers-1]) transform(translation(InnerTranslation(i, keyID)) * rotation(CapRotation(i, keyID)), elliptical_rectangle(InnerTransform(i, keyID), b = CapRoundness(i,keyID),fn=fn))]);
         }
       }
-      if(Stem == true){
-         translate([0,0,StemBrimDep])rotate(stemRot)difference(){   
+      if(Stem == true)
+      {
+        translate([0,0,StemBrimDep])rotate(stemRot)difference()
+        {   
           cylinder(d =5.5,KeyHeight(keyID)-StemBrimDep, $fn= 32);
           skin(StemCurve);
           skin(StemCurve2);
         }
-//        translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID))*rotation(StemRotation(i, keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=StemRadius(i, keyID)))]); //Transition Support for taller profile
+        // translate([0,0,-.001])skin([for (i=[0:stemLayers-1]) transform(translation(StemTranslation(i,keyID))*rotation(StemRotation(i, keyID)), rounded_rectangle_profile(StemTransform(i, keyID),fn=fn,r=StemRadius(i, keyID)))]); //Transition Support for taller profile
       }
-    //cut for fonts and extra pattern for light?
+      //cut for fonts and extra pattern for light?
     }
     
     //Cuts
     
     //Fonts
-    if(Legends ==  true){
-//          #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
+    if(Legends ==  true)
+    {
+      // #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
       translate([0,0,KeyHeight(keyID)-5])linear_extrude(height =5)text( text = "A", font = "Calibri:style=Bold", size = 4, valign = "center", halign = "center" );
       //  #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,-3.5,0])linear_extrude(height = 0.5)text( text = "Me", font = "Constantia:style=Bold", size = 3, valign = "center", halign = "center" );
-      }
-   //Dish Shape 
-    if(Dish == true){
-     if(visualizeDish == false){
-      translate([-TopWidShift(keyID),.00001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
-     } else {
-      #translate([-TopWidShift(keyID),.00001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)]) rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
-      #translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
-     } 
-   }
-     if(crossSection == true) {
-       translate([0,-15,-.1])cube([15,30,20]); 
-//      translate([-15.1,-15,-.1])cube([15,30,20]); 
-     }
-    if(homeDot == true){
-      // center dot
-      #translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1])sphere(r = dotRadius); // center dot
-      // double bar dots
-//      rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])sphere(r = dotRadius); // center dot
-//      rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([-.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])sphere(r = dotRadius); // center dot
-      //tri center dots
-//     #rotate([0,YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1]){
-//        rotate([0,0,0])translate([0,.75,0])sphere(r = dotRadius); // center dot
-//        rotate([0,0,120])translate([0,.75,0])sphere(r = dotRadius); // center dot
-//        rotate([0,0,240])translate([0,.75,0])sphere(r = dotRadius); // center dot
-//      }
+    }
+    //Dish Shape 
+    if(Dish == true)
+    {
+      if(visualizeDish == false)
+      {
+        translate([-TopWidShift(keyID),.00001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+        translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
+      } else {
+        #translate([-TopWidShift(keyID),.00001-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)]) rotate([0,-YAngleSkew(keyID),0])rotate([0,-90+XAngleSkew(keyID),90-ZAngleSkew(keyID)])skin(FrontCurve);
+        #translate([-TopWidShift(keyID),-TopLenShift(keyID),KeyHeight(keyID)-DishHeightDif(keyID)])rotate([0,-YAngleSkew(keyID),0])rotate([0,-90-XAngleSkew(keyID),270-ZAngleSkew(keyID)])skin(BackCurve);
+      } 
+    }  
+    
+    if(crossSection == true)
+    {
+      translate([0,-15,-.1])
+      cube([15,30,20]); 
+      // translate([-15.1,-15,-.1])cube([15,30,20]); 
     }
   }
+
+  if(homeDot == true)
+  {
+    // center dot
+    //#translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1])sphere(r = dotRadius); // center dot
+    // double bar dots
+    //  rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])sphere(r = dotRadius); // center dot
+    //  rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([-.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.5])sphere(r = dotRadius); // center dot
+
+    rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.2])sphere(r = dotRadius); // center dot
+    rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([-.75,-4.5,KeyHeight(keyID)-DishHeightDif(keyID)+0.2])sphere(r = dotRadius); // center dot
+    // tri center dots
+    // #rotate([0,YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,0,KeyHeight(keyID)-DishHeightDif(keyID)-0.1]){
+    // rotate([0,0,0])translate([0,.75,0])sphere(r = dotRadius); // center dot
+    // rotate([0,0,120])translate([0,.75,0])sphere(r = dotRadius); // center dot
+    // rotate([0,0,240])translate([0,.75,0])sphere(r = dotRadius); // center dot
+    // }
+  }
+
   //Homing dot
   
 }

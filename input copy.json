@@ -1,0 +1,215 @@
+{
+    "keyRows2": [
+        {
+            "defaultKeyType": "Concave",
+            "isEnabled": false,
+            "mirror": true,
+            "keycaps": [
+                { "keyId": 0 },
+                { "keyId": 0 },
+                { "keyId": 0 },
+                { "keyId": 0 },
+                { "keyId": 0 },
+                { "keyId": 0 }
+            ]
+        },
+        {
+            "defaultKeyType": "Concave",
+            "mirror": true,
+            "isEnabled": false,
+            "keycaps": [
+                { "keyId": 1 },
+                { "keyId": 1, "isHomeKey": true },
+                { "keyId": 1 },
+                { "keyId": 1 },
+                { "keyId": 1 },
+                { "keyId": 1 }
+            ]
+        },
+        {
+            "defaultKeyType": "Concave",
+            "mirror": true,
+            "isEnabled": false,
+            "keycaps": [
+                { "keyId": 2 },
+                { "keyId": 2 },
+                { "keyId": 2 },
+                { "keyId": 2 },
+                { "keyId": 2 },
+                { "keyId": 2 }
+            ]
+        },
+        {
+            "defaultKeyType": "Concave",
+            "mirror": true,
+            "isEnabled": false,
+            "keycaps": [
+                { "keyId": 3 },
+                { "keyId": 3, "isHomeKey": true },
+                { "keyId": 3 },
+                { "keyId": 3 },
+                { "keyId": 3 },
+                { "keyId": 3 }
+            ]
+        },
+        {
+            "defaultKeyType": "Thumb",
+            "mirror": false,
+            "isEnabled": true,
+            "keycaps": [
+                { "keyId": 0, "mirror": true },
+                { "keyId": 1, "mirror": true },
+                { "keyId": 2, "mirror": true },
+                { "keyId": 3, "mirror": true },
+                { "keyId": 4, "mirror": true },
+                { "keyId": 5, "mirror": true },
+                { "keyId": 6, "mirror": true },
+                { "keyId": 7, "mirror": true },
+                { "keyId": 8, "mirror": true },
+                { "keyId": 9, "mirror": true },
+                { "keyId": 10, "mirror": true },
+                { "keyId": 11, "mirror": true }
+            ]
+        }
+    ],
+    "keyRows": [
+        {
+            "info": "R2 - 1U",
+            "enabled": true,
+            "isHomeRow": false,
+            "keyIds": [1, 0, 0 , 0, 0, 1],
+            "keyTypes": ["Thumb", "Concave", "Concave", "Concave", "Concave", "Thumb"],
+            "mirrors": [false, false, false, false, false, true]
+        },
+        {
+            "info": "R3 Home - 1U",
+            "enabled": true,
+            "isHomeRow": true,
+            "keyIds": [1, 1, 1, 1, 1, 1],
+            "keyTypes": ["Thumb", "Concave", "Concave", "Concave", "Concave", "Thumb"],
+            "mirrors": [false, false, false, false, false, true]
+
+        },
+        {
+            "info": "R4 - 1U",
+            "enabled": true,
+            "isHomeRow": false,
+            "keyIds": [2, 2, 2, 2, 2, 2],
+            "keyTypes": ["Thumb", "Concave", "Concave", "Concave", "Concave", "Thumb"],
+            "mirrors": [false, false, false, false, false, true]
+        },
+        {
+            "info": "Thumbs",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+            "keyTypes": ["Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb","Thumb"],
+            "mirrors": [false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false]
+        },
+        {
+            "info": "R3 Home - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [3, 3],
+            "keyTypes": ["Concave"]
+        },
+        {
+            "info": "R5 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [4, 4],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R1 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [5, 5],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R5 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [6, 6],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R4 - 1.25U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [7, 7],
+            "keyType": "Concave"
+        },        
+        {
+            "info": "R3 Home - 1.25U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [8, 8],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R2 - 1.25U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [9, 9],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R5 - 1.5U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [10, 10],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R4 - 1.5U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [11, 11],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R3 Home - 1.5U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [12, 12],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R2 - 1.5U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [13, 13],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R2 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [14, 14],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R0 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [15, 15],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R0 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [16, 16],
+            "keyType": "Concave"
+        },
+        {
+            "info": "R0 - 1U",
+            "enabled": false,
+            "isHomeRow": false,
+            "keyIds": [17, 17],
+            "keyType": "Concave"
+        }
+    ]
+}

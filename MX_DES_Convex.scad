@@ -12,17 +12,17 @@ Version 2: Eliptical Rectangle
 
 //NOTE: with sweep cuts, top surface may not be visible in review, it should be visible once rendered
 
-mirror([0,0,0])keycap(
-  keyID  = 4, //change profile refer to KeyParameters Struct
-  cutLen = 0, //Don't change. for chopped caps
-  Stem   = true, //tusn on shell and stems
-  Dish   = true, //turn on dish cut
-  Stab   = 0, 
-  visualizeDish = false, // turn on debug visual of Dish 
-  crossSection  = false, // center cut to check internal
-  homeDot = false, //turn on homedots
-  Legends = false
- );
+// mirror([0,0,0])convex_keycap(
+//   keyID  = 4, //change profile refer to KeyParameters Struct
+//   cutLen = 0, //Don't change. for chopped caps
+//   Stem   = true, //tusn on shell and stems
+//   Dish   = true, //turn on dish cut
+//   Stab   = 0, 
+//   visualizeDish = false, // turn on debug visual of Dish 
+//   crossSection  = false, // center cut to check internal
+//   homeDot = false, //turn on homedots
+//   Legends = false
+//  );
 
 //Parameters
 wallthickness = 1.5;   
@@ -49,99 +49,44 @@ extra_vertical  = 0.6;
 StemBrimDep     = 0.25; 
 stemLayers      = 50; //resolution of stem to cap top transition
 
-keyParameters = //keyParameters[KeyID][ParameterID]
-[
-//  BotWid, BotLen, TWDif, TLDif, keyh, WSft, LSft  XSkew, YSkew, ZSkew, WEx, LEx, CapR0i, CapR0f, CapR1i, CapR1f, CapREx, StemEx
-//normie hipro v1
-    [17.16,  17.16,   6.5, 	 6.5, 11.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5
-    [35.46,  17.16,   6.5, 	 6.5, 11.0,    0,    0,   -10,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 2u
-    [17.16,  17.16,   6.5, 	 6.5,    9,    0,    0,     3,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R3 Home
-    [17.16*2,17.16,   6.5, 	 6.5,  8.6,    0,    0,    -8,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 2u low pro 3
-//normie hi-sculpt 4 row system  17~23
-    [17.16,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  4
-    [22.26,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 1.25u 
-    [26.66,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 1.5u 
-    [31.06,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 1.75u 
-    [35.56,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 2.0u 8
-    [40.86,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 2.25u 8
-    [50.66,  17.16,   6.5, 	 6.5, 11.0,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5 2.75u 8
-    
-//normie  mild  4 row system 
-    [17.16,  17.16,    6.5, 	 6.5, 10.3,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  9
-    [22.26,  17.16,    6.5, 	 6.5, 10.3,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  10
-    [26.66,  17.16,    6.5, 	 6.5, 10.3,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  11
-    [31.06,  17.16,    6.5, 	 6.5, 10.3,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  12
-    [35.56,  17.16,    6.5, 	 6.5, 10.3,    0,    0,    -9,     0,     0,   2,   2,      1,      5,      1,    3.5,     2,       2], //R5  13 
-//nueron R5s
-    [35.46,  17.96,    6.5,    6.5, 10.5,    0,    0,    -5,     0,     0,   2,   2,      1,      5,      1,      5,     2,       2], //R5  2u
-    [26.66,  17.16,    6.5, 	 6.5, 10.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,      5,     2,       2], //R5 1.5u 
-    [40.66,  17.16,    6.5, 	 6.5, 10.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,      5,     2,       2], //R5 2.25u 
-    [49.86,  17.16,    6.5, 	 6.5, 10.5,    0,    0,    -3,     0,     0,   2,   2,      1,      5,      1,      5,     2,       2], //R5 2.75u
-];
-
-dishParameters = //dishParameter[keyID][ParameterID]
-[ 
-//FFwd1 FFwd2 FPit1 FPit2  DshDepi DishDepf,DshHDif FArcIn FArcFn FArcEx     BFwd1 BFwd2 BPit1 BPit2  BArcIn BArcFn BArcEx
-  [   4,    4,  -10,  -20,      3,      7,   8.2,     9,     2,        4,    9,    3,   15,    8.2,     9,     2], //R5
-  [   4,  3.5,  -13,  -50,      2,    4.5,  18.2,  17.5,     2,       4.5,  2.5,   -5,  -50,   18.2,    17,     2], //R5 2u
-  [   3,    3,  -10,  -50,      3,      7,   8.8,     9,     2,        4,    3,   -5,  -30,    8.8,     9,     2],  //R3
-  [   3, 3.25,  -10,  -45,      2,    4.3,  18.2,    21,     2,        5,    3,  -10,  -30,   18.2,    21,     2], //R4
-//normie hi-sculpt 4 row system  17~23
-  [   4,    3,  -10,  -20,    1.5,      4,   8.2,     9,     2,        4,    3,  -10,  -30,    8.2,     9,     2], //R5
-  [   4,    3,  -10,  -20,    1.5,      4,  10.2,    11,     2,        4,    3,  -10,  -30,   10.2,    11,     2],//R5 1.25u
-  [   4,    3,  -10,  -20,    1.5,      4,  12.4,    13,     2,        4,    3,  -10,  -30,   12.4,    13,     2], //R5 1.5u
-  [   4,    3,  -10,  -20,    1.5,      4,  14.6,    15,     2,        4,    3,  -10,  -30,   14.6,    15,     2], //R5 1.75u
-  [   4,    3,  -10,  -20,    1.5,      4,  16.8,    17,     2,        4,    3,  -10,  -30,   16.8,    17,     2], //R5 2.0u
-  [   4,    3,  -10,  -20,    1.5,      4,  19.5,    20,     2,        4,    3,  -10,  -30,   19.5,    20,     2], //R5 2.25u
-  [   4,    3,  -10,  -20,    1.5,      4,  24.5,  24.5,     2,        4,    3,  -10,  -30,   24.5,  24.5,     2], //R5 2.75u
-//normie hi-sculpt 4 row system  17~23
-  [   4,    3,  -10,  -20,    1.5,      4,   8.2,     9,     2,        4,    3,  -10,  -30,    8.2,     9,     2], //R5
-  [   4,    3,  -10,  -20,    1.5,      4,  10.2,    11,     2,        4,    3,  -10,  -30,   10.2,    11,     2],//R5 1.25u
-  [   4,    3,  -10,  -20,    1.5,      4,  12.4,    13,     2,        4,    3,  -10,  -30,   12.4,    13,     2], //R5 1.5u
-  [   4,    3,  -10,  -20,    1.5,      4,  14.6,    15,     2,        4,    3,  -10,  -30,   14.6,    15,     2], //R5 1.75u
-  [   4,    3,  -10,  -20,    1.5,      4,  16.8,    17,     2,        4,    3,  -10,  -30,   16.8,    17,     2], //R5 2.0u
-//
-  [   4,    3,  -10,  -20,    1.8,    4.5,  17.5,    19,     2,        4,   10,    3,   15,   17.5,    19,     2], //R5
-  [   4,    3,  -10,  -20,    1.5,      4,  11.8,    12,     2,        4,    3,  -10,  -30,   11.8,    12,     2], //R5 1.5u
-  [   4,    3,  -10,  -20,    1.5,      4,  18.8,  18.8,     2,        4,    3,  -10,  -30,   18.8,  18.8,     2], //R5 2.25u
-  [   4,    3,  -10,  -20,    1.5,      4,  23.5,    24,     2,        4,    3,  -10,  -30,   23.5,    24,     2], //R5 2.75u
-];
+dishParameters = import(file = "dishParameters.json")["Convex"];
+keyParameters = import(file = "keyParameters.json")["Convex"];
  
-function FrontForward1(keyID) = dishParameters[keyID][0];  //
-function FrontForward2(keyID) = dishParameters[keyID][1];  // 
-function FrontPitch1(keyID)   = dishParameters[keyID][2];  //
-function FrontPitch2(keyID)   = dishParameters[keyID][3];  //
-function DishDepth(keyID)     = dishParameters[keyID][4];  //
-function DishHeightDif(keyID) = dishParameters[keyID][5];  //
-function FrontInitArc(keyID)  = dishParameters[keyID][6];
-function FrontFinArc(keyID)   = dishParameters[keyID][7];
-function FrontArcExpo(keyID)  = dishParameters[keyID][8];
-function BackForward1(keyID)  = dishParameters[keyID][9];  //
-function BackForward2(keyID)  = dishParameters[keyID][10];  // 
-function BackPitch1(keyID)    = dishParameters[keyID][11];  //
-function BackPitch2(keyID)    = dishParameters[keyID][12];  //
-function BackInitArc(keyID)   = dishParameters[keyID][13];
-function BackFinArc(keyID)    = dishParameters[keyID][14];
-function BackArcExpo(keyID)   = dishParameters[keyID][15];
+function FrontForward1(keyID) = dishParameters[keyID].frontForward1;  //
+function FrontForward2(keyID) = dishParameters[keyID].frontForward2;  // 
+function FrontPitch1(keyID)   = dishParameters[keyID].frontPitch1;  //
+function FrontPitch2(keyID)   = dishParameters[keyID].frontPitch2;  //
+function DishDepth(keyID)     = dishParameters[keyID].dishDepth;  //
+function DishHeightDif(keyID) = dishParameters[keyID].dishHeightDif;  //
+function FrontInitArc(keyID)  = dishParameters[keyID].frontInitArc;
+function FrontFinArc(keyID)   = dishParameters[keyID].frontFinArc;
+function FrontArcExpo(keyID)  = dishParameters[keyID].frontArcExpo;
+function BackForward1(keyID)  = dishParameters[keyID].backForward1;  //
+function BackForward2(keyID)  = dishParameters[keyID].backForward2;  // 
+function BackPitch1(keyID)    = dishParameters[keyID].backPitch1;  //
+function BackPitch2(keyID)    = dishParameters[keyID].backPitch2;  //
+function BackInitArc(keyID)   = dishParameters[keyID].backInitArc;
+function BackFinArc(keyID)    = dishParameters[keyID].backFinArc;
+function BackArcExpo(keyID)   = dishParameters[keyID].backArcExpo;
 
-function BottomWidth(keyID)  = keyParameters[keyID][0];  //
-function BottomLength(keyID) = keyParameters[keyID][1];  // 
-function TopWidthDiff(keyID) = keyParameters[keyID][2];  //
-function TopLenDiff(keyID)   = keyParameters[keyID][3];  //
-function KeyHeight(keyID)    = keyParameters[keyID][4];  //
-function TopWidShift(keyID)  = keyParameters[keyID][5];
-function TopLenShift(keyID)  = keyParameters[keyID][6];
-function XAngleSkew(keyID)   = keyParameters[keyID][7];
-function YAngleSkew(keyID)   = keyParameters[keyID][8];
-function ZAngleSkew(keyID)   = keyParameters[keyID][9];
-function WidExponent(keyID)  = keyParameters[keyID][10];
-function LenExponent(keyID)  = keyParameters[keyID][11];
-function CapRound0i(keyID)   = keyParameters[keyID][12];
-function CapRound0f(keyID)   = keyParameters[keyID][13];
-function CapRound1i(keyID)   = keyParameters[keyID][14];
-function CapRound1f(keyID)   = keyParameters[keyID][15];
-function ChamExponent(keyID) = keyParameters[keyID][16];
-function StemExponent(keyID) = keyParameters[keyID][17];
+function BottomWidth(keyID)  = keyParameters[keyID].bottomWidth;  //
+function BottomLength(keyID) = keyParameters[keyID].bottomLength;  // 
+function TopWidthDiff(keyID) = keyParameters[keyID].topWidthDiff;  //
+function TopLenDiff(keyID)   = keyParameters[keyID].topLenDiff;  //
+function KeyHeight(keyID)    = keyParameters[keyID].keyHeight;  //
+function TopWidShift(keyID)  = keyParameters[keyID].topWidShift;
+function TopLenShift(keyID)  = keyParameters[keyID].topLenShift;
+function XAngleSkew(keyID)   = keyParameters[keyID].xAngleSkew;
+function YAngleSkew(keyID)   = keyParameters[keyID].yAngleSkew;
+function ZAngleSkew(keyID)   = keyParameters[keyID].zAngleSkew;
+function WidExponent(keyID)  = keyParameters[keyID].widExponent;
+function LenExponent(keyID)  = keyParameters[keyID].lenExponent;
+function CapRound0i(keyID)   = keyParameters[keyID].capRound0i;
+function CapRound0f(keyID)   = keyParameters[keyID].capRound0f;
+function CapRound1i(keyID)   = keyParameters[keyID].capRound1i;
+function CapRound1f(keyID)   = keyParameters[keyID].capRound1f;
+function ChamExponent(keyID) = keyParameters[keyID].chamExponent;
+function StemExponent(keyID) = keyParameters[keyID].stemExponent;
 
 function FrontTrajectory(keyID) = 
   [
@@ -241,7 +186,7 @@ function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))
 
 
 ///----- KEY Builder Module
-module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, homeDot = false, Stab = 0) {
+module convex_keycap(keyID = 0, cutLen = 0, visualizeDish = false, crossSection = false, Dish = true, Stem = false, homeDot = false, Stab = 0, Legends=false) {
   
   //Set Parameters for dish shape
   FrontPath = quantize_trajectories(FrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
